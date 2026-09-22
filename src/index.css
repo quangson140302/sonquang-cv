@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f4f4f7;
+    color: #18181b;
+  }
+
+  .font-times {
+    font-family: 'Times New Roman', Times, 'Nimbus Roman No9 L', serif;
+  }
+
+  .font-georgia {
+    font-family: Georgia, Cambria, 'Times New Roman', serif;
+  }
+
+  .font-inter {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Text', system-ui, sans-serif;
+  }
+}
+
+/* Apple-style frosted glass */
+.apple-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.08), 0 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.paper-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 20px 45px -15px rgba(0,0,0,0.08);
+}
+
+/* Print Optimization for 1:1 Harvard CV layout */
+@media print {
+  @page {
+    margin: 0.5in 0.5in 0.5in 0.5in;
+    size: auto;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .cv-document {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: none !important;
+  }
+}
