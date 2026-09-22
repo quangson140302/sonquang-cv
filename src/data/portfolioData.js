@@ -76,36 +76,10 @@ export const portfolioData = {
     {
       company: "BSS Group",
       role: {
-        en: "Customer Support Specialist",
-        vi: "Chuyên viên Hỗ trợ Khách hàng Quốc tế"
-      },
-      period: "10/2025 – 05/2026",
-      location: "Vietnam (Remote / Global Clients)",
-      badge: "Customer Delight",
-      highlights: {
-        en: [
-          "Delivered responsive and professional customer support to international users via live chat and email, ensuring timely resolution of inquiries and issues.",
-          "Assisted customers in navigating complex product features and services, providing clear and empathetic step-by-step guidance to enhance user experience.",
-          "Identified, escalated, and followed up on intricate product issues to cross-functional engineering teams to ensure complete resolution.",
-          "Maintained consistent communication across various time zones with utmost flexibility and high quality of service.",
-          "Contributed to team knowledge base by documenting recurring issues and effective solutions to improve overall support efficiency."
-        ],
-        vi: [
-          "Cung cấp dịch vụ hỗ trợ khách hàng quốc tế chuyên nghiệp, kịp thời qua live chat và email, giải quyết triệt để các khúc mắc phát sinh.",
-          "Hướng dẫn người dùng khai thác tối đa tính năng sản phẩm với phong thái nhiệt huyết, đồng cảm và rõ ràng.",
-          "Phân loại, báo cáo và phối hợp chặt chẽ với đội ngũ kỹ thuật để xử lý các lỗi phức tạp cho khách hàng.",
-          "Duy trì giao tiếp xuyên suốt các múi giờ quốc tế khác nhau, linh hoạt đáp ứng tiến độ công việc.",
-          "Đóng góp xây dựng cơ sở dữ liệu tri thức (Knowledge Base) tài liệu hóa các sự cố thường gặp, nâng cao hiệu suất toàn đội ngũ."
-        ]
-      }
-    },
-    {
-      company: "BSS Group",
-      role: {
         en: "Technical Support Specialist",
         vi: "Chuyên viên Hỗ trợ Kỹ thuật (Technical Support)"
       },
-      period: "05/2025 – 09/2025",
+      period: "05/2026 – 09/2026",
       location: "Vietnam (Global Merchants)",
       badge: "App Troubleshooting",
       highlights: {
@@ -122,6 +96,32 @@ export const portfolioData = {
           "Điều tra lỗi tích hợp API, bất đồng bộ webhook và dữ liệu giữa storefront với hệ thống quản lý.",
           "Phối hợp chặt chẽ cùng lập trình viên và QA để tái hiện lỗi, soạn thảo kịch bản lỗi chi tiết (STR) và kiểm thử hotfix trước khi đẩy lên production.",
           "Hỗ trợ giải pháp kỹ thuật và viết code snippet kịp thời cho khách hàng quốc tế qua live chat và ticket với điểm số CSAT cao."
+        ]
+      }
+    },
+    {
+      company: "BSS Group",
+      role: {
+        en: "Customer Support Specialist",
+        vi: "Chuyên viên Hỗ trợ Khách hàng Quốc tế"
+      },
+      period: "11/2025 – 05/2026",
+      location: "Vietnam (Remote / Global Clients)",
+      badge: "Customer Delight",
+      highlights: {
+        en: [
+          "Delivered responsive and professional customer support to international users via live chat and email, ensuring timely resolution of inquiries and issues.",
+          "Assisted customers in navigating complex product features and services, providing clear and empathetic step-by-step guidance to enhance user experience.",
+          "Identified, escalated, and followed up on intricate product issues to cross-functional engineering teams to ensure complete resolution.",
+          "Maintained consistent communication across various time zones with utmost flexibility and high quality of service.",
+          "Contributed to team knowledge base by documenting recurring issues and effective solutions to improve overall support efficiency."
+        ],
+        vi: [
+          "Cung cấp dịch vụ hỗ trợ khách hàng quốc tế chuyên nghiệp, kịp thời qua live chat và email, giải quyết triệt để các khúc mắc phát sinh.",
+          "Hướng dẫn người dùng khai thác tối đa tính năng sản phẩm với phong thái nhiệt huyết, đồng cảm và rõ ràng.",
+          "Phân loại, báo cáo và phối hợp chặt chẽ với đội ngũ kỹ thuật để xử lý các lỗi phức tạp cho khách hàng.",
+          "Duy trì giao tiếp xuyên suốt các múi giờ quốc tế khác nhau, linh hoạt đáp ứng tiến độ công việc.",
+          "Đóng góp xây dựng cơ sở dữ liệu tri thức (Knowledge Base) tài liệu hóa các sự cố thường gặp, nâng cao hiệu suất toàn đội ngũ."
         ]
       }
     },

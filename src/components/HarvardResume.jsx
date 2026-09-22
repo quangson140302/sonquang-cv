@@ -2,12 +2,12 @@ import React from 'react';
 import { ExternalLink, Layers, CheckCircle2, Sparkles } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
-export default function HarvardResume({ 
-  fontFamily = 'times', 
-  fontSize = 'normal', 
+export default function HarvardResume({
+  fontFamily = 'times',
+  fontSize = 'normal',
   lang = 'en',
-  activeFilter = 'all', 
-  onSelectProject 
+  activeFilter = 'all',
+  onSelectProject
 }) {
   const isVi = lang === 'vi';
 
@@ -88,7 +88,7 @@ export default function HarvardResume({
       period: '9/2024 – 12/2024',
       categories: ['frontend', 'backend', 'ai'],
       github: 'https://github.com/quangson140302/mern-ecommerce',
-      description: isVi 
+      description: isVi
         ? 'Dự án phát triển nền tảng thương mại điện tử chuyên biệt ngành thực phẩm, tích hợp hệ thống phân tích đánh giá người dùng thông minh bằng thuật toán học máy Naive Bayes để phân loại cảm xúc (Tích cực, Tiêu cực, Trung tính) nhằm nâng cao trải nghiệm mua sắm.'
         : 'The project involves developing an e-commerce platform specializing in food products, integrated with an intelligent feedback system that classifies user reviews into categories such as positive, negative, and neutral to enhance the shopping experience.',
       contributions: isVi ? [
@@ -161,7 +161,7 @@ export default function HarvardResume({
   ];
 
   return (
-    <div 
+    <div
       className={`cv-document max-w-[960px] mx-auto transition-all duration-300 bg-white text-zinc-900 paper-shadow border border-zinc-200/90 rounded-2xl md:rounded-3xl ${currentSize.padding} my-2 sm:my-4 md:my-8 ${getFontClass()}`}
     >
       {/* 1. HEADER */}
@@ -173,15 +173,15 @@ export default function HarvardResume({
         <div className={`${currentSize.bodySize} text-zinc-700 flex flex-wrap items-center justify-center gap-x-2 gap-y-1`}>
           <span>{isVi ? 'Ninh Kiều, TP. Cần Thơ' : 'Ninh Kieu, Can Tho City'}</span>
           <span className="text-zinc-400">•</span>
-          <a 
-            href="tel:0343839979" 
+          <a
+            href="tel:0343839979"
             className="hover:underline hover:text-blue-600 font-medium whitespace-nowrap"
           >
             0343839979
           </a>
           <span className="text-zinc-400">•</span>
-          <a 
-            href="mailto:shnquang02@gmail.com" 
+          <a
+            href="mailto:shnquang02@gmail.com"
             className="hover:underline hover:text-blue-600 font-medium whitespace-nowrap"
           >
             shnquang02@gmail.com
@@ -189,10 +189,10 @@ export default function HarvardResume({
         </div>
 
         <div className={`${currentSize.bodySize} text-blue-700 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 gap-y-1.5 mt-2 font-semibold`}>
-          <a 
-            href="https://linkedin.com/in/quang-son" 
-            target="_blank" 
-            rel="noreferrer" 
+          <a
+            href="https://linkedin.com/in/quang-son"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-1.5 hover:underline group px-2 sm:px-0 py-0.5 sm:py-0 rounded-md bg-blue-50/60 sm:bg-transparent border sm:border-0 border-blue-200/60 text-xs sm:text-inherit"
           >
             <LinkedinIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
@@ -200,10 +200,10 @@ export default function HarvardResume({
             <ExternalLink className="w-3 h-3 opacity-70 group-hover:opacity-100 flex-shrink-0" />
           </a>
           <span className="text-zinc-400 hidden sm:inline">•</span>
-          <a 
-            href="https://github.com/quangson140302" 
-            target="_blank" 
-            rel="noreferrer" 
+          <a
+            href="https://github.com/quangson140302"
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-1.5 hover:underline group px-2 sm:px-0 py-0.5 sm:py-0 rounded-md bg-zinc-100 sm:bg-transparent border sm:border-0 border-zinc-200 text-xs sm:text-inherit"
           >
             <GithubIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
@@ -236,7 +236,7 @@ export default function HarvardResume({
           </span>
         </h2>
         <div className={`${currentSize.bodySize} ${currentSize.lineHeight} space-y-2 text-zinc-800`}>
-          
+
           {/* Technical Skills Rows */}
           <div className={`p-1.5 rounded-lg transition-all ${getSpotlightClass(['frontend', 'backend'])}`}>
             <div className="flex items-center justify-between">
@@ -272,7 +272,7 @@ export default function HarvardResume({
               {getMatchedBadge(['support'], 'GLOBAL CSAT')}
             </div>
             <p className="mt-0.5">
-              {isVi 
+              {isVi
                 ? 'Tiếng Anh – Sử dụng thành thạo hằng ngày trong công việc hỗ trợ kỹ thuật và giao tiếp với khách hàng quốc tế qua live chat và email.'
                 : 'English – Proficient used daily in supporting international customers via live chat and email.'}
             </p>
@@ -281,7 +281,7 @@ export default function HarvardResume({
           {/* Soft Skills */}
           <div className={`p-1.5 rounded-lg transition-all ${getSpotlightClass(['support'])}`}>
             <span className="font-bold text-zinc-950">{isVi ? 'Kỹ năng mềm (Soft Skills):' : 'Soft Skills:'}</span>{' '}
-            {isVi 
+            {isVi
               ? 'Giao tiếp & Thuyết trình chuyên nghiệp, Tư duy phân tích nguyên nhân gốc rễ, Kỹ năng gỡ lỗi & giải quyết vấn đề, Làm việc nhóm, Khả năng thích ứng cao, Tự học nhanh, Làm việc độc lập hiệu quả, Sẵn sàng làm việc theo ca linh hoạt và ca đêm.'
               : 'Strong Communication, Presentation, Analytical Thinking & Root Cause Analysis, Problem Solving, Teamwork, Adaptability, Fast Learner, Able to work independently, Comfortable with night shifts.'}
           </div>
@@ -297,7 +297,7 @@ export default function HarvardResume({
         </div>
       </section>
 
-      {/* 4. WORK EXPERIENCE: Ordered Chronologically 2024 -> 2025 -> 2026 */}
+      {/* 4. WORK EXPERIENCE: Ordered Chronologically 2024 -> 2025 */}
       <section className="mb-6">
         <div className="border-b-2 border-zinc-950 pb-0.5 mb-3.5 flex items-center justify-between">
           <h2 className={`${currentSize.sectionHeading} font-bold uppercase tracking-wider text-zinc-950`}>
@@ -344,44 +344,8 @@ export default function HarvardResume({
           </ul>
         </div>
 
-        {/* Milestone 2 (2025): Technical Support Specialist @ BSS Group */}
-        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-5 ${getSpotlightClass(['support', 'backend', 'shopify'])}`}>
-          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span>Technical Support Specialist</span>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">
-                2025
-              </span>
-              {getMatchedBadge(['support', 'backend', 'shopify'], 'BSS TECH SUPPORT')}
-            </div>
-            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">{isVi ? 'Tháng 05/2025 – Tháng 09/2025' : 'May 2025 – September 2025'}</span>
-          </div>
-          <div className="italic font-medium text-zinc-800 mb-1.5 flex items-center gap-2">
-            <span>BSS Group</span>
-          </div>
-          <ul className="list-disc ml-4 sm:ml-5 space-y-1 text-zinc-800">
-            {isVi ? (
-              <>
-                <li>Chẩn đoán và xử lý các xung đột mức mã nguồn (code-level conflicts) cho các cửa hàng thương mại điện tử sử dụng ứng dụng BSS, tập trung vào khả năng tương thích theme, logic bảng giá và quy trình thanh toán (checkout flows).</li>
-                <li>Trực tiếp gỡ lỗi (debug) JavaScript, CSS tuỳ biến và Liquid templates bằng DevTools để khôi phục tính năng bị gián đoạn và đảm bảo chuẩn responsive.</li>
-                <li>Điều tra lỗi tích hợp API, bất đồng bộ webhook payload và đồng bộ dữ liệu giữa storefront với cơ sở dữ liệu backend.</li>
-                <li>Phối hợp chặt chẽ với Software Engineers và QA: tái hiện edge-case bugs, chuẩn bị kịch bản lỗi chi tiết (STR) và nghiệm thu bản hotfix.</li>
-                <li>Cung cấp các đoạn mã xử lý nhanh (custom code snippets) và hướng dẫn kỹ thuật kịp thời cho khách hàng quốc tế với điểm số CSAT cao.</li>
-              </>
-            ) : (
-              <>
-                <li>Diagnosed and resolved code-level conflicts for global merchants using BSS e-commerce applications, focusing on theme compatibility, pricing rules, and checkout flows.</li>
-                <li>Debugged JavaScript, custom CSS styling, and Shopify Liquid template errors directly using browser DevTools to restore broken store features and responsive layouts.</li>
-                <li>Investigated API integration failures, webhook payload inconsistencies, and database synchronization issues between storefronts and back-office services.</li>
-                <li>Collaborated closely with software developers and QA teams by reproducing edge-case bugs, preparing detailed Steps-to-Reproduce (STR), and verifying hotfixes.</li>
-                <li>Delivered timely technical solutions and custom code snippets to international merchants via live chat and ticketing systems with high CSAT ratings.</li>
-              </>
-            )}
-          </ul>
-        </div>
-
-        {/* Milestone 3 (2025 - 2026): Customer Support Specialist @ BSS Group */}
-        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-2 ${getSpotlightClass(['support'])}`}>
+        {/* Milestone 2 (2024 - 2025): Customer Support Specialist @ BSS Group */}
+        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-5 ${getSpotlightClass(['support'])}`}>
           <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
             <div className="flex items-center gap-2 flex-wrap">
               <span>Customer Support Specialist</span>
@@ -390,7 +354,7 @@ export default function HarvardResume({
               </span>
               {getMatchedBadge(['support'], 'CUSTOMER SUCCESS')}
             </div>
-            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">{isVi ? 'Tháng 10/2025 – Tháng 05/2026' : 'October 2025 – May 2026'}</span>
+            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">{isVi ? 'Tháng 11/2025 – Tháng 05/2026' : 'November 2025 – May 2026'}</span>
           </div>
           <div className="italic font-medium text-zinc-800 mb-1.5 flex items-center gap-2">
             <span>BSS Group</span>
@@ -415,6 +379,42 @@ export default function HarvardResume({
             )}
           </ul>
         </div>
+
+        {/* Milestone 3 (2025): Technical Support Specialist @ BSS Group */}
+        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-2 ${getSpotlightClass(['support', 'backend', 'shopify'])}`}>
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span>Technical Support Specialist</span>
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">
+                2026
+              </span>
+              {getMatchedBadge(['support', 'backend', 'shopify'], 'BSS TECH SUPPORT')}
+            </div>
+            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">{isVi ? 'Tháng 05/2026 – Tháng 09/2026' : 'May 2026 – September 2026'}</span>
+          </div>
+          <div className="italic font-medium text-zinc-800 mb-1.5 flex items-center gap-2">
+            <span>BSS Group</span>
+          </div>
+          <ul className="list-disc ml-4 sm:ml-5 space-y-1 text-zinc-800">
+            {isVi ? (
+              <>
+                <li>Chẩn đoán và xử lý các xung đột mức mã nguồn (code-level conflicts) cho các cửa hàng thương mại điện tử sử dụng ứng dụng BSS, tập trung vào khả năng tương thích theme, logic bảng giá và quy trình thanh toán (checkout flows).</li>
+                <li>Trực tiếp gỡ lỗi (debug) JavaScript, CSS tuỳ biến và Liquid templates bằng DevTools để khôi phục tính năng bị gián đoạn và đảm bảo chuẩn responsive.</li>
+                <li>Điều tra lỗi tích hợp API, bất đồng bộ webhook payload và đồng bộ dữ liệu giữa storefront với cơ sở dữ liệu backend.</li>
+                <li>Phối hợp chặt chẽ với Software Engineers và QA: tái hiện edge-case bugs, chuẩn bị kịch bản lỗi chi tiết (STR) và nghiệm thu bản hotfix.</li>
+                <li>Cung cấp các đoạn mã xử lý nhanh (custom code snippets) và hướng dẫn kỹ thuật kịp thời cho khách hàng quốc tế với điểm số CSAT cao.</li>
+              </>
+            ) : (
+              <>
+                <li>Diagnosed and resolved code-level conflicts for global merchants using BSS e-commerce applications, focusing on theme compatibility, pricing rules, and checkout flows.</li>
+                <li>Debugged JavaScript, custom CSS styling, and Shopify Liquid template errors directly using browser DevTools to restore broken store features and responsive layouts.</li>
+                <li>Investigated API integration failures, webhook payload inconsistencies, and database synchronization issues between storefronts and back-office services.</li>
+                <li>Collaborated closely with software developers and QA teams by reproducing edge-case bugs, preparing detailed Steps-to-Reproduce (STR), and verifying hotfixes.</li>
+                <li>Delivered timely technical solutions and custom code snippets to international merchants via live chat and ticketing systems with high CSAT ratings.</li>
+              </>
+            )}
+          </ul>
+        </div>
       </section>
 
       {/* 5. PROJECTS */}
@@ -435,10 +435,10 @@ export default function HarvardResume({
                 <Layers className="w-3 h-3" /> Architecture
               </span>
               {getMatchedBadge(projectsData[0].categories, 'MERN + AI')}
-              <a 
-                href="https://github.com/quangson140302/mern-ecommerce" 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href="https://github.com/quangson140302/mern-ecommerce"
+                target="_blank"
+                rel="noreferrer"
                 onClick={(e) => e.stopPropagation()}
                 className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1"
                 title="View GitHub Repository"
@@ -480,10 +480,10 @@ export default function HarvardResume({
                 <Layers className="w-3 h-3" /> Architecture
               </span>
               {getMatchedBadge(projectsData[1].categories, 'MOBILE CV')}
-              <a 
-                href="https://github.com/quangson140302/waste-classification" 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href="https://github.com/quangson140302/waste-classification"
+                target="_blank"
+                rel="noreferrer"
                 onClick={(e) => e.stopPropagation()}
                 className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1"
                 title="View GitHub Repository"
@@ -525,10 +525,10 @@ export default function HarvardResume({
                 <Layers className="w-3 h-3" /> Architecture
               </span>
               {getMatchedBadge(projectsData[2].categories, 'RASA NLP')}
-              <a 
-                href="https://github.com/quangson140302/MathGenieAssistant" 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href="https://github.com/quangson140302/MathGenieAssistant"
+                target="_blank"
+                rel="noreferrer"
                 onClick={(e) => e.stopPropagation()}
                 className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1"
                 title="View GitHub Repository"
@@ -581,7 +581,7 @@ export default function HarvardResume({
           </div>
           <p className="mt-1 text-zinc-800">
             <span className="font-semibold text-zinc-950">{isVi ? 'Các môn học chuyên ngành trọng tâm:' : 'Relevant Coursework:'}</span>{' '}
-            {isVi 
+            {isVi
               ? 'Cơ sở Lập trình, Lý thuyết Đồ thị, Cấu trúc Dữ liệu & Giải thuật, Quản trị Cơ sở Dữ liệu, Phân tích & Thiết kế Thuật toán, Phát triển Ứng dụng Web.'
               : 'Fundamentals of Programming, Graph Theory, Data Structures, Data Management, Algorithm Analysis & Design, Web Application Development.'}
           </p>

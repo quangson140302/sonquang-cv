@@ -4,17 +4,16 @@ import {
   Printer, 
   Share2, 
   Mail, 
-  Type, 
-  QrCode, 
   Check, 
+  Type, 
+  ChevronUp, 
   Sparkles,
-  ChevronUp,
-  Minus,
-  Plus,
-  X,
-  XCircle,
-  CheckCircle2,
-  FileText
+  X, 
+  CheckCircle2, 
+  XCircle, 
+  Info, 
+  Layers, 
+  Sliders 
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -24,7 +23,8 @@ export default function AppleToolbar({
   fontSize, 
   setFontSize, 
   onOpenQR, 
-  onOpenGuide 
+  onOpenGuide,
+  onOpenWelcome 
 }) {
   const [copiedType, setCopiedType] = useState(null);
   const [showTypeMenu, setShowTypeMenu] = useState(false);
@@ -152,6 +152,18 @@ export default function AppleToolbar({
       {/* Main Apple Floating Dock */}
       <div className="flex items-center gap-1 sm:gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full apple-glass transition-all duration-300 shadow-xl">
         
+        {/* Welcome Gate / Entrance trigger */}
+        {onOpenWelcome && (
+          <button
+            onClick={onOpenWelcome}
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-full bg-zinc-100/90 hover:bg-zinc-200/90 text-zinc-800 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs"
+            title="Mở lại màn hình chào mừng (Welcome Gate)"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+            <span className="hidden md:inline">Welcome</span>
+          </button>
+        )}
+
         {/* Print / Save PDF */}
         <button
           onClick={handlePrint}

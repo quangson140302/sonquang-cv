@@ -5,7 +5,8 @@ import RecruiterModal from './components/RecruiterModal';
 import AudioBioPlayer from './components/AudioBioPlayer';
 import KeywordFilter from './components/KeywordFilter';
 import ProjectModal from './components/ProjectModal';
-import { Share2, Check, Globe } from 'lucide-react';
+import WelcomeGate from './components/WelcomeGate';
+import { Share2, Check, Globe, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
   const [copiedLink, setCopiedLink] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showWelcome, setShowWelcome] = useState(true);
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -28,6 +30,17 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f4f4f7] print:bg-white print:p-0 print:m-0 text-zinc-900 pb-28 pt-2.5 sm:pt-4 px-2 sm:px-6 selection:bg-blue-600 selection:text-white">
 
+      {/* Interactive Welcome Gate / Splash Entrance Screen */}
+      {showWelcome && (
+        <WelcomeGate
+          lang={lang}
+          setLang={setLang}
+          onEnter={(mode) => {
+            setShowWelcome(false);
+          }}
+        />
+      )}
+
       {/* Top Apple Minimalist Bar */}
       <header className="max-w-[960px] mx-auto mb-2.5 sm:mb-3 flex items-center justify-between text-xs text-zinc-600 no-print px-1 sm:px-2 gap-2">
         <div className="flex items-center gap-2 min-w-0">
@@ -35,6 +48,14 @@ export default function App() {
           <span className="font-semibold text-zinc-900 truncate text-xs sm:text-sm">
             Son Huynh Nhat Quang
           </span>
+          <button
+            onClick={() => setShowWelcome(true)}
+            className="hidden sm:inline-flex items-center gap-1.5 text-[11px] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 font-medium border border-blue-200/80 transition-all cursor-pointer shadow-xs"
+            title="Mở lại màn hình chào mừng (Welcome Gate)"
+          >
+            <Sparkles className="w-3 h-3 text-blue-600 animate-pulse" />
+            <span>{lang === 'vi' ? 'Màn hình Chào' : 'Welcome'}</span>
+          </button>
           <span className="hidden md:inline text-[11px] px-2 py-0.5 rounded-full bg-zinc-200/80 text-zinc-700 font-mono font-medium whitespace-nowrap">
             Standard Paper Edition
           </span>
@@ -70,7 +91,7 @@ export default function App() {
           {/* Share button */}
           <button
             onClick={handleShare}
-            className="hover:text-zinc-950 flex items-center gap-1.5 transition-colors font-semibold px-2 sm:px-2.5 py-1 rounded-lg hover:bg-zinc-200/60 text-xs"
+            className="hover:text-zinc-950 flex items-center gap-1.5 transition-colors font-semibold px-2 sm:px-2.5 py-1 rounded-lg hover:bg-zinc-200/60 text-xs cursor-pointer"
             title="Copy shareable link to clipboard"
           >
             {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5 text-zinc-600" />}
@@ -106,6 +127,7 @@ export default function App() {
         setFontFamily={setFontFamily}
         fontSize={fontSize}
         setFontSize={setFontSize}
+        onOpenWelcome={() => setShowWelcome(true)}
         onOpenQR={() => {
           setModalTab('qr');
           setModalOpen(true);
