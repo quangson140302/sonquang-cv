@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   Printer, 
   Share2, 
@@ -9,7 +10,11 @@ import {
   Sparkles,
   ChevronUp,
   Minus,
-  Plus
+  Plus,
+  X,
+  XCircle,
+  CheckCircle2,
+  FileText
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -23,17 +28,28 @@ export default function AppleToolbar({
 }) {
   const [copiedType, setCopiedType] = useState(null);
   const [showTypeMenu, setShowTypeMenu] = useState(false);
+  const [showPrintModal, setShowPrintModal] = useState(false);
   const menuRef = useRef(null);
 
-  // Close menu when clicking outside
+  // Close menus when clicking outside or pressing Escape
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setShowTypeMenu(false);
       }
     };
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setShowTypeMenu(false);
+        setShowPrintModal(false);
+      }
+    };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const handleCopy = (text, type) => {
@@ -48,7 +64,19 @@ export default function AppleToolbar({
   };
 
   const handlePrint = () => {
-    window.print();
+    setShowPrintModal(true);
+  };
+
+  const executePrint = () => {
+    setShowPrintModal(false);
+    const prevTitle = document.title;
+    document.title = 'CV_Son_Huynh_Nhat_Quang';
+    setTimeout(() => {
+      window.print();
+      setTimeout(() => {
+        document.title = prevTitle;
+      }, 1000);
+    }, 200);
   };
 
   const fontOptions = [
@@ -64,11 +92,11 @@ export default function AppleToolbar({
   ];
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 no-print" ref={menuRef}>
+    <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 no-print max-w-[calc(100vw-20px)]" ref={menuRef}>
       
       {/* Popover Typography Menu (Triggered by T) */}
       {showTypeMenu && (
-        <div className="absolute bottom-14 left-1/2 -translate-x-1/2 w-72 p-4 bg-white/95 backdrop-blur-xl border border-zinc-200/90 rounded-2xl shadow-2xl animate-fadeIn space-y-4 text-xs">
+        <div className="absolute bottom-14 left-1/2 -translate-x-1/2 w-[calc(100vw-28px)] max-w-xs sm:w-72 p-4 bg-white/95 backdrop-blur-xl border border-zinc-200/90 rounded-2xl shadow-2xl animate-fadeIn space-y-4 text-xs">
           
           {/* Font Size Adjuster */}
           <div>
@@ -122,12 +150,12 @@ export default function AppleToolbar({
       )}
 
       {/* Main Apple Floating Dock */}
-      <div className="flex items-center gap-1 sm:gap-2 px-3.5 py-2 rounded-full apple-glass transition-all duration-300">
+      <div className="flex items-center gap-1 sm:gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full apple-glass transition-all duration-300 shadow-xl">
         
         {/* Print / Save PDF */}
         <button
           onClick={handlePrint}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-sm transition-all hover:scale-105 active:scale-95"
+          className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 text-xs font-semibold rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-sm transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer"
           title="Print or Save as Clean PDF"
         >
           <Printer className="w-3.5 h-3.5" />
@@ -172,6 +200,97 @@ export default function AppleToolbar({
         </button>
 
       </div>
+
+      {/* Apple-style Print / Export PDF Guidance Modal Portaled to document.body */}
+      {showPrintModal && typeof document !== 'undefined' && createPortal(
+        <div 
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-fadeIn no-print"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowPrintModal(false);
+          }}
+        >
+          <div className="w-full max-w-lg bg-white rounded-3xl p-6 sm:p-7 shadow-2xl border border-zinc-200 text-left space-y-4 relative">
+            
+            {/* Modal Header */}
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 flex-shrink-0">
+                  <Printer className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-zinc-950">Xuất CV PDF Chuẩn Chuyên Nghiệp</h3>
+                  <p className="text-xs text-zinc-500">Mẹo để file PDF 100% sạch sẽ, không dính localhost</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setShowPrintModal(false)}
+                className="p-1.5 rounded-full text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 transition-colors cursor-pointer"
+                title="Đóng"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Instruction Checklist */}
+            <div className="space-y-3 pt-1">
+              
+              {/* Tip 1: Uncheck Headers and footers */}
+              <div className="p-3.5 rounded-2xl bg-rose-50/80 border border-rose-200 flex items-start gap-3">
+                <XCircle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
+                <div className="text-xs text-rose-950 space-y-0.5">
+                  <div className="font-bold">1. Bỏ chọn: "Headers and footers" (Tiêu đề và chân trang)</div>
+                  <div className="text-rose-800/90 text-[11.5px] leading-relaxed">
+                    Trong hộp thoại in của trình duyệt (mục <b>Cài đặt khác / More settings</b>), hãy <b>bỏ tick</b> ô này để ẩn hoàn toàn ngày giờ, tiêu đề và link <code>localhost</code>.
+                  </div>
+                </div>
+              </div>
+
+              {/* Tip 2: Check Background graphics */}
+              <div className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200 flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                <div className="text-xs text-emerald-950 space-y-0.5">
+                  <div className="font-bold">2. Bật chọn: "Background graphics" (Đồ họa nền)</div>
+                  <div className="text-emerald-800/90 text-[11.5px] leading-relaxed">
+                    Hãy <b>tick chọn (✓)</b> ô này để toàn bộ màu nền badge mốc năm (2024–2025, 2025), tag Architecture và thanh highlight giữ màu sắc rực rỡ y như trên website.
+                  </div>
+                </div>
+              </div>
+
+              {/* Tip 3: Intelligent page break note */}
+              <div className="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-200 flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                <div className="text-xs text-blue-950 space-y-0.5">
+                  <div className="font-bold">3. Tự động chia 2 trang thông minh (2-Page Harvard Format)</div>
+                  <div className="text-blue-800/90 text-[11.5px] leading-relaxed">
+                    • <b>Trang 1:</b> Tóm tắt năng lực, Kỹ năng cốt lõi & Toàn bộ Kinh nghiệm làm việc.<br/>
+                    • <b>Trang 2:</b> Kiến trúc các Dự án tiêu biểu & Học vấn Đại học Cần Thơ.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-zinc-100">
+              <button
+                onClick={() => setShowPrintModal(false)}
+                className="px-4 py-2 rounded-xl text-xs font-semibold text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 transition-colors cursor-pointer"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={executePrint}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-md transition-all hover:scale-102 active:scale-98 cursor-pointer"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Mở Hộp Thoại In Ngay</span>
+              </button>
+            </div>
+
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

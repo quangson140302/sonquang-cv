@@ -18,8 +18,8 @@ export default function ProjectModal({ project, isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn no-print">
-      <div className="w-full max-w-2xl rounded-3xl p-6 sm:p-8 border shadow-2xl transition-all bg-white text-zinc-900 border-zinc-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/50 backdrop-blur-sm animate-fadeIn no-print" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl p-5 sm:p-8 border shadow-2xl transition-all bg-white text-zinc-900 border-zinc-200">
         
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-5 pb-4 border-b border-zinc-200">
@@ -101,12 +101,12 @@ export default function ProjectModal({ project, isOpen, onClose }) {
         </div>
 
         {/* Footer actions */}
-        <div className="mt-6 pt-4 border-t border-zinc-200 flex items-center justify-between">
+        <div className="mt-5 pt-4 border-t border-zinc-200 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
           <a
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-sm transition-all"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-sm transition-all"
           >
             <GithubIcon className="w-4 h-4" />
             <span>Open Repository on GitHub</span>

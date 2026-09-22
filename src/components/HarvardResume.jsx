@@ -33,24 +33,24 @@ export default function HarvardResume({
           sectionHeading: 'text-xs sm:text-[13.5px]',
           bodySize: 'text-[12px] sm:text-[12.5px]',
           lineHeight: 'leading-normal',
-          padding: 'p-6 sm:p-10 md:p-12'
+          padding: 'p-4 sm:p-8 md:p-12'
         };
       case 'large':
         return {
-          titleSize: 'text-3xl sm:text-4xl md:text-5xl',
+          titleSize: 'text-2xl sm:text-4xl md:text-5xl',
           sectionHeading: 'text-sm sm:text-base',
-          bodySize: 'text-sm sm:text-[15.5px]',
+          bodySize: 'text-[13px] sm:text-[15.5px]',
           lineHeight: 'leading-relaxed',
-          padding: 'p-8 sm:p-14 md:p-16'
+          padding: 'p-5 sm:p-12 md:p-16'
         };
       case 'normal':
       default:
         return {
-          titleSize: 'text-3xl sm:text-4xl md:text-[40px]',
+          titleSize: 'text-2xl sm:text-4xl md:text-[40px]',
           sectionHeading: 'text-sm sm:text-[15px]',
-          bodySize: 'text-[13px] sm:text-[14px]',
+          bodySize: 'text-[12.5px] sm:text-[14px]',
           lineHeight: 'leading-relaxed',
-          padding: 'p-8 sm:p-12 md:p-16'
+          padding: 'p-4 sm:p-10 md:p-16'
         };
     }
   };
@@ -74,7 +74,7 @@ export default function HarvardResume({
   const getMatchedBadge = (categories, label) => {
     if (activeFilter === 'all' || !matchesFilter(categories)) return null;
     return (
-      <span className="no-print inline-flex items-center gap-1 ml-2 px-2 py-0.5 rounded-md text-[10.5px] font-mono font-bold bg-blue-600 text-white shadow-xs">
+      <span className="inline-flex items-center gap-1 ml-2 px-2 py-0.5 rounded-md text-[10.5px] font-mono font-bold bg-blue-600 text-white shadow-xs">
         <Sparkles className="w-2.5 h-2.5" />
         {label || 'Match'}
       </span>
@@ -162,53 +162,53 @@ export default function HarvardResume({
 
   return (
     <div 
-      className={`cv-document max-w-[960px] mx-auto transition-all duration-300 bg-white text-zinc-900 paper-shadow border border-zinc-200/90 rounded-2xl md:rounded-3xl ${currentSize.padding} my-4 md:my-8 ${getFontClass()}`}
+      className={`cv-document max-w-[960px] mx-auto transition-all duration-300 bg-white text-zinc-900 paper-shadow border border-zinc-200/90 rounded-2xl md:rounded-3xl ${currentSize.padding} my-2 sm:my-4 md:my-8 ${getFontClass()}`}
     >
       {/* 1. HEADER */}
-      <header className="text-center pb-6 mb-6 border-b border-zinc-300">
-        <h1 className={`${currentSize.titleSize} font-bold tracking-tight mb-2.5 text-zinc-950`}>
+      <header className="text-center pb-4 sm:pb-6 mb-4 sm:mb-6 border-b border-zinc-300">
+        <h1 className={`${currentSize.titleSize} font-bold tracking-tight mb-2 text-zinc-950`}>
           Son Huynh Nhat Quang
         </h1>
 
-        <div className={`${currentSize.bodySize} text-zinc-700 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1`}>
+        <div className={`${currentSize.bodySize} text-zinc-700 flex flex-wrap items-center justify-center gap-x-2 gap-y-1`}>
           <span>{isVi ? 'Ninh Kiều, TP. Cần Thơ' : 'Ninh Kieu, Can Tho City'}</span>
           <span className="text-zinc-400">•</span>
           <a 
             href="tel:0343839979" 
-            className="hover:underline hover:text-blue-600 font-medium"
+            className="hover:underline hover:text-blue-600 font-medium whitespace-nowrap"
           >
             0343839979
           </a>
           <span className="text-zinc-400">•</span>
           <a 
             href="mailto:shnquang02@gmail.com" 
-            className="hover:underline hover:text-blue-600 font-medium"
+            className="hover:underline hover:text-blue-600 font-medium whitespace-nowrap"
           >
             shnquang02@gmail.com
           </a>
         </div>
 
-        <div className={`${currentSize.bodySize} text-blue-700 flex flex-wrap items-center justify-center gap-x-3.5 gap-y-1 mt-1.5 font-semibold`}>
+        <div className={`${currentSize.bodySize} text-blue-700 flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-3.5 gap-y-1.5 mt-2 font-semibold`}>
           <a 
             href="https://linkedin.com/in/quang-son" 
             target="_blank" 
             rel="noreferrer" 
-            className="inline-flex items-center gap-1.5 hover:underline group"
+            className="inline-flex items-center gap-1.5 hover:underline group px-2 sm:px-0 py-0.5 sm:py-0 rounded-md bg-blue-50/60 sm:bg-transparent border sm:border-0 border-blue-200/60 text-xs sm:text-inherit"
           >
-            <LinkedinIcon className="w-4 h-4 no-print" />
-            <span>linkedin.com/in/quang-son</span>
-            <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 no-print" />
+            <LinkedinIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+            <span className="truncate max-w-[150px] sm:max-w-none">linkedin.com/in/quang-son</span>
+            <ExternalLink className="w-3 h-3 opacity-70 group-hover:opacity-100 flex-shrink-0" />
           </a>
-          <span className="text-zinc-400">•</span>
+          <span className="text-zinc-400 hidden sm:inline">•</span>
           <a 
             href="https://github.com/quangson140302" 
             target="_blank" 
             rel="noreferrer" 
-            className="inline-flex items-center gap-1.5 hover:underline group"
+            className="inline-flex items-center gap-1.5 hover:underline group px-2 sm:px-0 py-0.5 sm:py-0 rounded-md bg-zinc-100 sm:bg-transparent border sm:border-0 border-zinc-200 text-xs sm:text-inherit"
           >
-            <GithubIcon className="w-4 h-4 no-print" />
-            <span>github.com/quangson140302</span>
-            <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 no-print" />
+            <GithubIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+            <span className="truncate max-w-[150px] sm:max-w-none">github.com/quangson140302</span>
+            <ExternalLink className="w-3 h-3 opacity-70 group-hover:opacity-100 flex-shrink-0" />
           </a>
         </div>
       </header>
@@ -231,7 +231,7 @@ export default function HarvardResume({
       <section className="mb-6">
         <h2 className={`${currentSize.sectionHeading} font-bold uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 pb-0.5 mb-2.5 flex items-center justify-between`}>
           <span>{isVi ? 'Kỹ Năng & Thông Tin Bổ Sung (Skills & Additional)' : 'Skills & Additional'}</span>
-          <span className="no-print text-xs font-normal text-zinc-500 lowercase tracking-normal">
+          <span className="text-xs font-normal text-zinc-500 lowercase tracking-normal">
             {isVi ? 'năng lực cốt lõi' : 'core competencies'}
           </span>
         </h2>
@@ -303,27 +303,27 @@ export default function HarvardResume({
           <h2 className={`${currentSize.sectionHeading} font-bold uppercase tracking-wider text-zinc-950`}>
             {isVi ? 'Kinh Nghiệm Làm Việc (Work Experience)' : 'Work Experience'}
           </h2>
-          <span className="text-xs font-mono font-semibold text-blue-700 no-print flex items-center gap-1">
+          <span className="text-xs font-mono font-semibold text-blue-700 flex items-center gap-1">
             <span>2024 → 2025 → 2026</span>
           </span>
         </div>
 
         {/* Milestone 1 (2024 - 2025): PageFly – Shopify Page Builder */}
-        <div className={`${currentSize.bodySize} ${currentSize.lineHeight} mb-5 ${getSpotlightClass(['shopify', 'support', 'frontend'])}`}>
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
+        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-5 ${getSpotlightClass(['shopify', 'support', 'frontend'])}`}>
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
             <div className="flex items-center gap-2 flex-wrap">
               <span>Technical Support Specialist</span>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold no-print">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold border border-blue-200">
                 2024 – 2025
               </span>
               {getMatchedBadge(['shopify', 'support', 'frontend'], 'SHOPIFY TECH SUPPORT')}
             </div>
-            <span className="font-semibold text-zinc-700">{isVi ? 'Tháng 10/2024 – Tháng 07/2025' : 'October 2024 – July 2025'}</span>
+            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">{isVi ? 'Tháng 10/2024 – Tháng 07/2025' : 'October 2024 – July 2025'}</span>
           </div>
           <div className="italic font-medium text-zinc-800 mb-1.5 flex items-center gap-2">
             <span>PageFly – Shopify Page Builder</span>
           </div>
-          <ul className="list-disc ml-5 space-y-1 text-zinc-800">
+          <ul className="list-disc ml-4 sm:ml-5 space-y-1 text-zinc-800">
             {isVi ? (
               <>
                 <li>Cung cấp dịch vụ hỗ trợ kỹ thuật kịp thời, hiệu quả cho thương nhân toàn cầu sử dụng ứng dụng PageFly qua live chat và ticket.</li>
@@ -345,21 +345,21 @@ export default function HarvardResume({
         </div>
 
         {/* Milestone 2 (2025): Technical Support Specialist @ BSS Group */}
-        <div className={`${currentSize.bodySize} ${currentSize.lineHeight} mb-5 ${getSpotlightClass(['support', 'backend', 'shopify'])}`}>
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
+        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-5 ${getSpotlightClass(['support', 'backend', 'shopify'])}`}>
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
             <div className="flex items-center gap-2 flex-wrap">
               <span>Technical Support Specialist</span>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold no-print">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">
                 2025
               </span>
               {getMatchedBadge(['support', 'backend', 'shopify'], 'BSS TECH SUPPORT')}
             </div>
-            <span className="font-semibold text-zinc-700">{isVi ? 'Tháng 05/2025 – Tháng 09/2025' : 'May 2025 – September 2025'}</span>
+            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">{isVi ? 'Tháng 05/2025 – Tháng 09/2025' : 'May 2025 – September 2025'}</span>
           </div>
           <div className="italic font-medium text-zinc-800 mb-1.5 flex items-center gap-2">
             <span>BSS Group</span>
           </div>
-          <ul className="list-disc ml-5 space-y-1 text-zinc-800">
+          <ul className="list-disc ml-4 sm:ml-5 space-y-1 text-zinc-800">
             {isVi ? (
               <>
                 <li>Chẩn đoán và xử lý các xung đột mức mã nguồn (code-level conflicts) cho các cửa hàng thương mại điện tử sử dụng ứng dụng BSS, tập trung vào khả năng tương thích theme, logic bảng giá và quy trình thanh toán (checkout flows).</li>
@@ -381,21 +381,21 @@ export default function HarvardResume({
         </div>
 
         {/* Milestone 3 (2025 - 2026): Customer Support Specialist @ BSS Group */}
-        <div className={`${currentSize.bodySize} ${currentSize.lineHeight} mb-2 ${getSpotlightClass(['support'])}`}>
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
+        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-2 ${getSpotlightClass(['support'])}`}>
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
             <div className="flex items-center gap-2 flex-wrap">
               <span>Customer Support Specialist</span>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold no-print">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-bold border border-purple-200">
                 2025 – 2026
               </span>
               {getMatchedBadge(['support'], 'CUSTOMER SUCCESS')}
             </div>
-            <span className="font-semibold text-zinc-700">{isVi ? 'Tháng 10/2025 – Tháng 05/2026' : 'October 2025 – May 2026'}</span>
+            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">{isVi ? 'Tháng 10/2025 – Tháng 05/2026' : 'October 2025 – May 2026'}</span>
           </div>
           <div className="italic font-medium text-zinc-800 mb-1.5 flex items-center gap-2">
             <span>BSS Group</span>
           </div>
-          <ul className="list-disc ml-5 space-y-1 text-zinc-800">
+          <ul className="list-disc ml-4 sm:ml-5 space-y-1 text-zinc-800">
             {isVi ? (
               <>
                 <li>Cung cấp dịch vụ chăm sóc khách hàng quốc tế chuyên nghiệp, phản hồi nhanh chóng qua live chat và email, đảm bảo giải quyết kịp thời các khúc mắc.</li>
@@ -418,20 +418,20 @@ export default function HarvardResume({
       </section>
 
       {/* 5. PROJECTS */}
-      <section className="mb-6">
+      <section className="mb-6 print-page-break">
         <h2 className={`${currentSize.sectionHeading} font-bold uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 pb-0.5 mb-3.5 flex items-center justify-between`}>
           <span>{isVi ? 'Dự Án Tiêu Biểu (Projects)' : 'Projects'}</span>
-          <span className="text-xs font-normal text-zinc-500 tracking-normal no-print">
-            {isVi ? 'click dự án để xem kiến trúc & lệnh git clone' : 'click project to view architecture & git clone'}
+          <span className="text-xs font-normal text-zinc-500 tracking-normal">
+            {isVi ? 'kiến trúc kỹ thuật & mã nguồn' : 'technical architecture & source code'}
           </span>
         </h2>
 
         {/* Project 1: FoodEcom AI Review Platform */}
-        <div className={`${currentSize.bodySize} ${currentSize.lineHeight} mb-4 cursor-pointer group ${getSpotlightClass(projectsData[0].categories)}`} onClick={() => onSelectProject(projectsData[0])}>
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
+        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-4 cursor-pointer group ${getSpotlightClass(projectsData[0].categories)}`} onClick={() => onSelectProject(projectsData[0])}>
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="group-hover:text-blue-600 transition-colors">FoodEcom AI Review Platform</span>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-semibold no-print flex items-center gap-1">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-semibold flex items-center gap-1 border border-blue-200">
                 <Layers className="w-3 h-3" /> Architecture
               </span>
               {getMatchedBadge(projectsData[0].categories, 'MERN + AI')}
@@ -440,21 +440,21 @@ export default function HarvardResume({
                 target="_blank" 
                 rel="noreferrer" 
                 onClick={(e) => e.stopPropagation()}
-                className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1 no-print"
+                className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1"
                 title="View GitHub Repository"
               >
                 [GitHub Repo]
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
-            <span className="font-semibold text-zinc-700">9/2024 – 12/2024</span>
+            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">9/2024 – 12/2024</span>
           </div>
           <p className="text-zinc-800 mt-0.5">
             <span className="italic font-semibold text-zinc-950">{isVi ? 'Mô tả:' : 'Description:'}</span> {projectsData[0].description}
           </p>
           <div className="mt-1">
             <span className="italic font-semibold text-zinc-950">{isVi ? 'Đóng góp kỹ thuật cốt lõi:' : 'Key Contributions:'}</span>
-            <ul className="list-disc ml-5 space-y-0.5 mt-0.5 text-zinc-800">
+            <ul className="list-disc ml-4 sm:ml-5 space-y-0.5 mt-0.5 text-zinc-800">
               {projectsData[0].contributions.map((c, i) => (
                 <li key={i}>{c}</li>
               ))}
@@ -472,11 +472,11 @@ export default function HarvardResume({
         </div>
 
         {/* Project 2: WASTE-CLASSIFICATION */}
-        <div className={`${currentSize.bodySize} ${currentSize.lineHeight} mb-4 cursor-pointer group ${getSpotlightClass(projectsData[1].categories)}`} onClick={() => onSelectProject(projectsData[1])}>
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
+        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} mb-4 cursor-pointer group ${getSpotlightClass(projectsData[1].categories)}`} onClick={() => onSelectProject(projectsData[1])}>
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="group-hover:text-blue-600 transition-colors">WASTE-CLASSIFICATION</span>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-semibold no-print flex items-center gap-1">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-purple-100 text-purple-800 font-semibold flex items-center gap-1 border border-purple-200">
                 <Layers className="w-3 h-3" /> Architecture
               </span>
               {getMatchedBadge(projectsData[1].categories, 'MOBILE CV')}
@@ -485,21 +485,21 @@ export default function HarvardResume({
                 target="_blank" 
                 rel="noreferrer" 
                 onClick={(e) => e.stopPropagation()}
-                className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1 no-print"
+                className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1"
                 title="View GitHub Repository"
               >
                 [GitHub Repo]
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
-            <span className="font-semibold text-zinc-700">12/2023 – 03/2024</span>
+            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">12/2023 – 03/2024</span>
           </div>
           <p className="text-zinc-800 mt-0.5">
             <span className="italic font-semibold text-zinc-950">{isVi ? 'Mô tả:' : 'Description:'}</span> {projectsData[1].description}
           </p>
           <div className="mt-1">
             <span className="italic font-semibold text-zinc-950">{isVi ? 'Đóng góp kỹ thuật cốt lõi:' : 'Key Contributions:'}</span>
-            <ul className="list-disc ml-5 space-y-0.5 mt-0.5 text-zinc-800">
+            <ul className="list-disc ml-4 sm:ml-5 space-y-0.5 mt-0.5 text-zinc-800">
               {projectsData[1].contributions.map((c, i) => (
                 <li key={i}>{c}</li>
               ))}
@@ -517,11 +517,11 @@ export default function HarvardResume({
         </div>
 
         {/* Project 3: MathGenieAssistant */}
-        <div className={`${currentSize.bodySize} ${currentSize.lineHeight} cursor-pointer group ${getSpotlightClass(projectsData[2].categories)}`} onClick={() => onSelectProject(projectsData[2])}>
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
+        <div className={`cv-item ${currentSize.bodySize} ${currentSize.lineHeight} cursor-pointer group ${getSpotlightClass(projectsData[2].categories)}`} onClick={() => onSelectProject(projectsData[2])}>
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="group-hover:text-blue-600 transition-colors">MathGenieAssistant</span>
-              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold no-print flex items-center gap-1">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold flex items-center gap-1 border border-emerald-200">
                 <Layers className="w-3 h-3" /> Architecture
               </span>
               {getMatchedBadge(projectsData[2].categories, 'RASA NLP')}
@@ -530,21 +530,21 @@ export default function HarvardResume({
                 target="_blank" 
                 rel="noreferrer" 
                 onClick={(e) => e.stopPropagation()}
-                className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1 no-print"
+                className="text-xs font-mono font-normal text-blue-700 hover:underline inline-flex items-center gap-1"
                 title="View GitHub Repository"
               >
                 [GitHub Repo]
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
-            <span className="font-semibold text-zinc-700">08/2023 – 12/2023</span>
+            <span className="font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">08/2023 – 12/2023</span>
           </div>
           <p className="text-zinc-800 mt-0.5">
             <span className="italic font-semibold text-zinc-950">{isVi ? 'Mô tả:' : 'Description:'}</span> {projectsData[2].description}
           </p>
           <div className="mt-1">
             <span className="italic font-semibold text-zinc-950">{isVi ? 'Đóng góp kỹ thuật cốt lõi:' : 'Key Contributions:'}</span>
-            <ul className="list-disc ml-5 space-y-0.5 mt-0.5 text-zinc-800">
+            <ul className="list-disc ml-4 sm:ml-5 space-y-0.5 mt-0.5 text-zinc-800">
               {projectsData[2].contributions.map((c, i) => (
                 <li key={i}>{c}</li>
               ))}
@@ -563,21 +563,21 @@ export default function HarvardResume({
       </section>
 
       {/* 6. EDUCATION */}
-      <section>
+      <section className="cv-item">
         <h2 className={`${currentSize.sectionHeading} font-bold uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 pb-0.5 mb-2.5 flex items-center justify-between`}>
           <span>{isVi ? 'Học Vấn (Education)' : 'Education'}</span>
-          <span className="text-[11px] font-mono font-normal text-zinc-500 tracking-normal no-print">
+          <span className="text-[11px] font-mono font-normal text-zinc-500 tracking-normal">
             2020 – 2024
           </span>
         </h2>
         <div className={`${currentSize.bodySize} ${currentSize.lineHeight}`}>
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between font-bold text-zinc-950">
             <span>{isVi ? 'Đại học Cần Thơ (Can Tho University)' : 'Can Tho University'}</span>
-            <span className="font-medium text-zinc-600">{isVi ? 'Ninh Kiều, Cần Thơ' : 'Ninh Kieu, Can Tho City'}</span>
+            <span className="font-medium text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">{isVi ? 'Ninh Kiều, Cần Thơ' : 'Ninh Kieu, Can Tho City'}</span>
           </div>
-          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between italic text-zinc-800">
+          <div className="cv-header-row flex flex-col sm:flex-row sm:items-baseline justify-between italic text-zinc-800">
             <span>{isVi ? 'Chuyên ngành: Khoa học Máy tính (Major: Computer Science)' : 'Major: Computer Science'}</span>
-            <span className="not-italic font-semibold text-zinc-700">2020 – 2024</span>
+            <span className="not-italic font-semibold text-zinc-600 sm:text-zinc-700 text-xs sm:text-inherit mt-0.5 sm:mt-0">2020 – 2024</span>
           </div>
           <p className="mt-1 text-zinc-800">
             <span className="font-semibold text-zinc-950">{isVi ? 'Các môn học chuyên ngành trọng tâm:' : 'Relevant Coursework:'}</span>{' '}

@@ -37,36 +37,104 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 20px 45px -15px rgba(0,0,0,0.08);
 }
 
-/* Print Optimization for 1:1 Harvard CV layout */
+/* Hide scrollbar for horizontal swipe on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Print Optimization to look IDENTICAL to website view */
 @media print {
   @page {
-    margin: 0.5in 0.5in 0.5in 0.5in;
-    size: auto;
+    margin: 10mm 12mm 12mm 12mm;
+    size: A4 portrait;
+  }
+
+  *, html, body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html, body, #root, #root > div, main, .cv-document {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
   }
 
   body {
     background: #ffffff !important;
-    color: #000000 !important;
+    background-color: #ffffff !important;
     padding: 0 !important;
+    margin: 0 !important;
   }
 
+  /* Hide floating navigation toolbars & modals */
   .no-print {
     display: none !important;
   }
 
+  /* Document fills the page cleanly without broken box frames and with 100% pure white background */
   .cv-document {
     box-shadow: none !important;
     border: none !important;
+    border-radius: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
     background: #ffffff !important;
-    color: #000000 !important;
+    background-color: #ffffff !important;
   }
 
+  /* Intelligent Page Breaks: Projects starts cleanly on Page 2 */
+  .print-page-break {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /* Prevent orphaned section headings */
+  h1, h2, h3, .section-heading {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Prevent awkward page cut across jobs, projects, or education */
+  .cv-item {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Prevent awkward line breaks and single-word orphans */
+  p, li {
+    text-wrap: pretty !important;
+    orphans: 2 !important;
+    widows: 2 !important;
+  }
+
+  li {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Ensure header rows always keep title on the left and date on the right */
+  .cv-header-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: baseline !important;
+    width: 100% !important;
+  }
+
+  /* Ensure blue hyperlinks stay vibrant blue */
   a {
-    color: #000000 !important;
+    color: #1d4ed8 !important;
     text-decoration: none !important;
+  }
+
+  a:hover {
+    text-decoration: underline !important;
   }
 }
