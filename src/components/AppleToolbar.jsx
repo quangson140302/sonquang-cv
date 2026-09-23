@@ -64,19 +64,22 @@ export default function AppleToolbar({
   };
 
   const handlePrint = () => {
-    setShowPrintModal(true);
+    setShowTypeMenu(false);
+    setShowPrintModal(false);
+    const prevTitle = document.title;
+    document.title = 'CV_Son_Huynh_Nhat_Quang';
+    // Directly trigger print preview without blocking modal
+    window.print();
+    setTimeout(() => {
+      document.title = prevTitle;
+    }, 1000);
   };
 
   const executePrint = () => {
     setShowPrintModal(false);
-    const prevTitle = document.title;
-    document.title = 'CV_Son_Huynh_Nhat_Quang';
     setTimeout(() => {
-      window.print();
-      setTimeout(() => {
-        document.title = prevTitle;
-      }, 1000);
-    }, 200);
+      handlePrint();
+    }, 100);
   };
 
   const fontOptions = [
@@ -164,14 +167,23 @@ export default function AppleToolbar({
           </button>
         )}
 
-        {/* Print / Save PDF */}
+        {/* Print / Save PDF Direct Button */}
         <button
           onClick={handlePrint}
           className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 text-xs font-semibold rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-sm transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer"
-          title="Print or Save as Clean PDF"
+          title="In ngay hoặc Xuất file PDF sạch sẽ (Print immediately)"
         >
           <Printer className="w-3.5 h-3.5" />
           <span>Print / PDF</span>
+        </button>
+
+        {/* Optional Print Tips */}
+        <button
+          onClick={() => setShowPrintModal(true)}
+          className="p-1.5 rounded-full hover:bg-zinc-200/70 text-zinc-500 hover:text-blue-600 transition-colors cursor-pointer"
+          title="Mẹo in PDF chuẩn A4 không dính localhost"
+        >
+          <Info className="w-3.5 h-3.5" />
         </button>
 
         <div className="h-4 w-[1px] bg-zinc-300 mx-0.5"></div>
@@ -216,7 +228,8 @@ export default function AppleToolbar({
       {/* Apple-style Print / Export PDF Guidance Modal Portaled to document.body */}
       {showPrintModal && typeof document !== 'undefined' && createPortal(
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-fadeIn no-print"
+          id="print-modal-overlay"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-zinc-900/40 backdrop-blur-xs animate-fadeIn no-print"
           onClick={(e) => {
             if (e.target === e.currentTarget) setShowPrintModal(false);
           }}

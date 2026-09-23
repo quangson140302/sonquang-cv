@@ -60,7 +60,7 @@ export default function WelcomeGate({ onEnter, lang, setLang }) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 transition-all duration-500 no-print ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 transition-all duration-500 no-print print:hidden ${
         isExiting
           ? 'opacity-0 scale-105 pointer-events-none'
           : 'opacity-100 scale-100'

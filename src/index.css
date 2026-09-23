@@ -53,6 +53,14 @@
     size: A4 portrait;
   }
 
+  /* Reset all visual effects that trigger black canvas bugs in print engines */
+  *, *::before, *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
   *, html, body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -62,18 +70,26 @@
   html, body, #root, #root > div, main, .cv-document {
     background: #ffffff !important;
     background-color: #ffffff !important;
+    color: #18181b !important;
   }
 
   body {
     background: #ffffff !important;
     background-color: #ffffff !important;
+    color: #18181b !important;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  /* Hide floating navigation toolbars & modals */
-  .no-print {
+  /* Completely eliminate non-printable floating elements, backdrops, and modals */
+  .no-print, 
+  [class*="backdrop-blur"], 
+  .apple-glass,
+  header.no-print,
+  div[role="dialog"] {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 
   /* Document fills the page cleanly without broken box frames and with 100% pure white background */
